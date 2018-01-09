@@ -9,10 +9,10 @@ img = np.zeros((1700,1500))
 
 for x in range(0,1700,100):
 	for y in range(0,1500,100):
-		trueOrFalse = random.randint(0,1)
+		black = random.randint(0,1)
 		x_shape = random.randint(25,100)
 		y_shape = random.randint(25,100)
-		if trueOrFalse:
+		if black:
 			color = random.randint(0,255)
 			img[x : x + x_shape, y : y + y_shape] = color
 		else:
