@@ -46,7 +46,6 @@ def test():
 	img = np.zeros((110,110), dtype = np.uint8)
 	my_line = Line(img, 1,1,1,100)
 	rr,cc,img = my_line.draw()
-	for x in range(110):
-		print img[x,:]
+	print img
 
 test()
