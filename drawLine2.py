@@ -1,4 +1,5 @@
 import numpy as np
+from pylab import imshow, show
 
 class Line:
 
@@ -46,6 +47,9 @@ def test():
 	img = np.zeros((110,110), dtype = np.uint8)
 	my_line = Line(img, 1,1,1,100)
 	rr,cc,img = my_line.draw()
+	imshow(img)
+	show()
 	print img
 
-test()
+if __name__ == "__main__":
+	test()
