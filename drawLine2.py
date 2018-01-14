@@ -13,6 +13,14 @@ class Line:
 		self.unit_y, self.unit_x = 1,1
 
 	def calculate(self):
+		# get x, y value with algorithm:
+		# goal: same amount of position ex: x = [0,1,2], x has 3 pos, so y need 3 pos, y = [a,b,c]
+		""" amount = (distance betweeen x start and x end) divide by unit x
+		    same amount = distance between y start and y end) divide by unit y
+		    since we don't have 3 unknown, we need to set one unit to 1.
+		    but unit can't be > 1 cuz there will be some distance between 2 pixel => no line anymore
+		    so check the suitable unit (x or y) to set it 1.
+		    so we calculate now the amount of pos. finally we can get the value of the other unit"""
 		if (self.x_end - self.x_start)> (self.y_end - self.y_start):
 			self.times = self.x_end - self.x_start
 			self.unit_y = float((self.y_end - self.y_start)) / float(self.times)
@@ -32,8 +40,8 @@ class Line:
 			current_x += self.unit_x
 			current_y += self.unit_y
 	
-			self.rr.append(int(current_x))
-			self.cc.append(int(current_y))
+			self.rr.append(int(current_x)) # list of horizontal position
+			self.cc.append(int(current_y)) # list of vertical position
 
 	def draw(self):
 		self.calculate()
