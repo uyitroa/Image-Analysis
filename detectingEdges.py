@@ -1,7 +1,7 @@
 import numpy
 from skimage.io import imread
 from skimage.feature import canny
-import mahotas as mh # for only thresholding
+import mahotas as mh # for thresholding only 
 
 from pylab import imshow, show
 
