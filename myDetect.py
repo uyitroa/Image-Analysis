@@ -5,6 +5,7 @@ from pylab import imshow, show
 def openFile():
 	name = input("file name: ")
 	image = mahotas.imread(name)
+	image = image[:,:,0]
 	return image
 
 class Detect:
@@ -16,20 +17,22 @@ class Detect:
 		nCol = len(self.matrix[0])
 		new = numpy.zeros((nRow, nCol))
 		
-		currentColor = self.matrix[0][0]
 		for row in range(nRow):
-			for column in range(nCol):
+			for column in range(0,nCol):
+				currentColor = self.matrix[row][column]
 				if row + 1 < nRow:
 					nextColor = self.matrix[row + 1][column]
-					if not (currentColor + 10 > nextColor and currentColor - 10 < nextColor):
-						new[row][column] = 1
+					if not (currentColor + 15 > nextColor and currentColor - 15 < nextColor):
+						new[row + 1][column] = 1
 				if column + 1 < nCol:
 					nextColor = self.matrix[row][column + 1]
-					if not (currentColor + 10 > nextColor and currentColor - 10 < nextColor):
-						new[row][column] = 1
+					print(currentColor, nextColor)
+					if not (currentColor + 15 > nextColor and currentColor - 15 < nextColor):
+						new[row][column + 1] = 1
 		return new
 def test():
 	myMatrix = openFile()
+	print(myMatrix.shape)
 	detect = Detect(myMatrix)
 	myMatrix = detect.edge()
 	imshow(myMatrix)
