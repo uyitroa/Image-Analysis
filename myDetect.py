@@ -1,10 +1,10 @@
 import numpy
-import mahotas
+from skimage.io import imread
 from pylab import imshow, show
 
 def openFile():
 	name = input("file name: ")
-	image = mahotas.imread(name)
+	image = imread(name)
 	image = image[:,:,0]
 	return image
 
